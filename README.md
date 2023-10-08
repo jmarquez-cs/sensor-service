@@ -1,4 +1,5 @@
 # sensor-service
+[![Go Test Coverage](https://github.com/jmarquez-cs/sensor-service/actions/workflows/test_coverage.yaml/badge.svg?branch=main)](https://github.com/jmarquez-cs/sensor-service/actions/workflows/test_coverage.yaml)
 
 This is a simple API Go project serving a RESTful API for storing and querying sensor metadata.
 

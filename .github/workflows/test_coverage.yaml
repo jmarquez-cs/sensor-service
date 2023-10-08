@@ -34,7 +34,7 @@ jobs:
 
       - name: Test with coverage
         run: |
-          cd sensor-service/cmd/app/
+          cd cmd/app/
           go test -v -coverpkg=./... -coverprofile=coverage.out ./...
           go tool cover -func=coverage.out
 
