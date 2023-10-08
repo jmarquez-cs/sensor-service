@@ -1,0 +1,45 @@
+name: Go Test Coverage
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build:
+    name: Run Go tests with coverage
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17  # You can specify the Go version you need
+
+      - name: Cache Go modules
+        uses: actions/cache@v2
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Test with coverage
+        run: |
+          cd sensor-service/cmd/app/
+          go test -v -coverpkg=./... -coverprofile=coverage.out ./...
+          go tool cover -func=coverage.out
+
+      - name: Upload coverage to GitHub Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: sensor-service/cmd/app/coverage.out

@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "a7f70b42-6073-4859-b96a-b465b9711871",
+		"name": "sensor-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4037824"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/sensor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"sensor_x\", \"location\":{\"latitude\":40.730610, \"longitude\":-73.924241}, \"tags\":[\"outdoor\", \"temperature\"]}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sensor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sensor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sensor/{name}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"sensor_1\", \"location\":{\"latitude\":40.730610, \"longitude\":-73.935242}, \"tags\":[\"outdoor\", \"temperature\"]}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sensor/sensor_1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sensor",
+						"sensor_1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/nearest?lat={latitude}&lng={longitude}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/nearest?lat=40.730600&lng=-73.935230",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"nearest"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "40.730600"
+						},
+						{
+							"key": "lng",
+							"value": "-73.935230"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sensor/{name}",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"sensor_1\", \"location\": {\"latitude\": 52.5200, \"longitude\": 13.4050}, \"tags\": [\"forest\", \"89\"]}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sensor/sensor_1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sensor",
+						"sensor_1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
